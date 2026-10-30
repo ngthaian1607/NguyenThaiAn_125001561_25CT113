@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <!-- ============================================================
+         META & DOCUMENT CONFIG
+         Khai báo bộ mã ký tự, viewport cho responsive, tiêu đề trang
+         ============================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio cá nhân của Nguyễn Văn An – Front-end Developer" />
+    <meta name="author" content="Nguyễn Văn An" />
+    <title>Nguyễn Văn An | Portfolio</title>
+
+    <!-- ============================================================
+         FAVICON (icon tab trình duyệt)
+         Đặt file favicon.ico vào thư mục assets/icons/
+         ============================================================ -->
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+
+    <!-- ============================================================
+         EXTERNAL FONTS (Google Fonts)
+         Import font Inter cho giao diện hiện đại, dễ đọc
+         ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+         STYLESHEET CHÍNH
+         Liên kết đến file CSS riêng trong thư mục css/
+         ============================================================ -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- ============================================================
+         HEADER – NAVIGATION BAR
+         Thanh điều hướng cố định trên cùng trang
+         ============================================================ -->
+    <header class="site-header" role="banner">
+      <nav class="navbar" aria-label="Điều hướng chính">
+        <!-- Logo / Thương hiệu cá nhân -->
+        <a href="#hero" class="nav-brand" aria-label="Về trang chủ">
+          &lt;NVA /&gt;
+        </a>
+
+        <!-- Danh sách liên kết điều hướng -->
+        <ul class="nav-links" role="list">
+          <li><a href="#about"  class="nav-link">Giới thiệu</a></li>
+          <li><a href="#skills" class="nav-link">Kỹ năng</a></li>
+          <li><a href="#contact" class="nav-link nav-link--cta">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- /HEADER -->
+
+    <!-- ============================================================
+         MAIN CONTENT – toàn bộ nội dung chính của trang
+         ============================================================ -->
+    <main id="main-content">
+
+      <!-- ==========================================================
+           SECTION 1: HERO – Phần giới thiệu đầu trang
+           Chứa ảnh đại diện, tên, chức danh và nút hành động
+           ========================================================== -->
+      <section id="hero" class="hero-section" aria-labelledby="hero-heading">
+        <div class="container hero-container">
+
+          <!-- Ảnh đại diện (dùng placeholder từ dịch vụ picsum.photos) -->
+          <div class="hero-avatar-wrapper">
+            <img
+              src="https://picsum.photos/seed/portfolio/200/200"
+              alt="Ảnh đại diện của Nguyễn Văn An"
+              class="hero-avatar"
+              width="200"
+              height="200"
+              loading="eager"
+            />
+            <!-- Huy hiệu trạng thái "Sẵn sàng làm việc" -->
+            <span class="avatar-badge" aria-label="Trạng thái: Sẵn sàng làm việc">
+              ✅ Sẵn sàng
+            </span>
+          </div>
+
+          <!-- Thông tin giới thiệu -->
+          <div class="hero-info">
+            <!-- Lời chào mở đầu -->
+            <p class="hero-greeting">Xin chào, tôi là</p>
+
+            <!-- Tên đầy đủ – heading chính, hỗ trợ SEO -->
+            <h1 id="hero-heading" class="hero-name">Nguyễn Văn An</h1>
+
+            <!-- Chức danh / Vai trò nghề nghiệp -->
+            <p class="hero-title">
+              <span class="highlight">Front-end Developer</span>
+              &amp; UI/UX Enthusiast
+            </p>
+
+            <!-- Nút hành động chính -->
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn--primary">Liên hệ ngay</a>
+              <a
+                href="assets/NguyenVanAn_CV.pdf"
+                class="btn btn--outline"
+                download
+                aria-label="Tải xuống CV của Nguyễn Văn An"
+              >
+                Tải CV (PDF)
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- /HERO -->
+
+      <!-- ==========================================================
+           SECTION 2: ABOUT – Tóm tắt bản thân
+           Mô tả ngắn về kinh nghiệm, định hướng và phong cách làm việc
+           ========================================================== -->
+      <section id="about" class="about-section" aria-labelledby="about-heading">
+        <div class="container">
+
+          <!-- Tiêu đề section -->
+          <h2 id="about-heading" class="section-title">
+            <span class="section-title__icon" aria-hidden="true">👤</span>
+            Về tôi
+          </h2>
+
+          <!-- Đường kẻ trang trí dưới tiêu đề -->
+          <div class="section-divider" aria-hidden="true"></div>
+
+          <!-- Nội dung tóm tắt bản thân -->
+          <article class="about-content" aria-label="Tóm tắt bản thân">
+            <p class="about-text">
+              Tôi là một <strong>Front-end Developer</strong> với hơn <strong>3 năm kinh nghiệm</strong>
+              xây dựng giao diện web hiện đại, tối ưu hiệu suất và đảm bảo trải nghiệm người dùng
+              tốt nhất. Tôi đam mê biến những bản thiết kế thành những trang web sống động,
+              có thể truy cập được trên mọi thiết bị.
+            </p>
+            <p class="about-text">
+              Tôi tốt nghiệp ngành <strong>Công nghệ Thông tin</strong> tại Đại học Bách Khoa
+              Hà Nội và hiện đang tìm kiếm cơ hội cộng tác với các đội nhóm sáng tạo, hướng tới
+              các sản phẩm số có tác động xã hội tích cực.
+            </p>
+
+            <!-- Thống kê nhanh -->
+            <ul class="about-stats" role="list" aria-label="Số liệu nổi bật">
+              <li class="stat-item">
+                <span class="stat-number" aria-label="3 năm kinh nghiệm">3+</span>
+                <span class="stat-label">Năm kinh nghiệm</span>
+              </li>
+              <li class="stat-item">
+                <span class="stat-number" aria-label="20 dự án">20+</span>
+                <span class="stat-label">Dự án hoàn thành</span>
+              </li>
+              <li class="stat-item">
+                <span class="stat-number" aria-label="10 khách hàng">10+</span>
+                <span class="stat-label">Khách hàng hài lòng</span>
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+      <!-- /ABOUT -->
+
+      <!-- ==========================================================
+           SECTION 3: SKILLS – Danh sách 4 kỹ năng công nghệ
+           Mỗi thẻ kỹ năng gồm: icon, tên, mô tả ngắn, thanh tiến độ
+           ========================================================== -->
+      <section id="skills" class="skills-section" aria-labelledby="skills-heading">
+        <div class="container">
+
+          <!-- Tiêu đề section -->
+          <h2 id="skills-heading" class="section-title">
+            <span class="section-title__icon" aria-hidden="true">🛠️</span>
+            Kỹ năng công nghệ
+          </h2>
+          <div class="section-divider" aria-hidden="true"></div>
+
+          <!-- Lưới 4 thẻ kỹ năng -->
+          <ul class="skills-grid" role="list" aria-label="Danh sách kỹ năng">
+
+            <!-- Kỹ năng 1: HTML5 & CSS3 -->
+            <li class="skill-card">
+              <div class="skill-card__icon" aria-hidden="true">🌐</div>
+              <div class="skill-card__body">
+                <h3 class="skill-card__name">HTML5 &amp; CSS3</h3>
+                <p class="skill-card__desc">
+                  Xây dựng cấu trúc ngữ nghĩa (semantic HTML), thiết kế responsive
+                  bằng Flexbox và CSS Grid, hiệu ứng animation thuần CSS.
+                </p>
+                <!-- Thanh tiến độ thể hiện mức độ thành thạo -->
+                <div
+                  class="skill-bar"
+                  role="progressbar"
+                  aria-valuenow="92"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label="Mức độ thành thạo HTML5 & CSS3: 92%"
+                >
+                  <div class="skill-bar__fill" style="--skill-level: 92%;">
+                    <span class="skill-bar__label">92%</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- /Kỹ năng 1 -->
+
+            <!-- Kỹ năng 2: JavaScript (ES6+) -->
+            <li class="skill-card">
+              <div class="skill-card__icon" aria-hidden="true">⚡</div>
+              <div class="skill-card__body">
+                <h3 class="skill-card__name">JavaScript (ES6+)</h3>
+                <p class="skill-card__desc">
+                  Lập trình bất đồng bộ (async/await), thao tác DOM, Fetch API,
+                  quản lý state và module hóa code theo chuẩn ES Modules.
+                </p>
+                <div
+                  class="skill-bar"
+                  role="progressbar"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label="Mức độ thành thạo JavaScript: 85%"
+                >
+                  <div class="skill-bar__fill" style="--skill-level: 85%;">
+                    <span class="skill-bar__label">85%</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- /Kỹ năng 2 -->
+
+            <!-- Kỹ năng 3: React.js -->
+            <li class="skill-card">
+              <div class="skill-card__icon" aria-hidden="true">⚛️</div>
+              <div class="skill-card__body">
+                <h3 class="skill-card__name">React.js</h3>
+                <p class="skill-card__desc">
+                  Phát triển SPA với React Hooks, React Router, quản lý state
+                  bằng Context API và Redux Toolkit, tối ưu hiệu suất render.
+                </p>
+                <div
+                  class="skill-bar"
+                  role="progressbar"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label="Mức độ thành thạo React.js: 80%"
+                >
+                  <div class="skill-bar__fill" style="--skill-level: 80%;">
+                    <span class="skill-bar__label">80%</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- /Kỹ năng 3 -->
+
+            <!-- Kỹ năng 4: Git & DevTools -->
+            <li class="skill-card">
+              <div class="skill-card__icon" aria-hidden="true">🔧</div>
+              <div class="skill-card__body">
+                <h3 class="skill-card__name">Git &amp; DevTools</h3>
+                <p class="skill-card__desc">
+                  Quản lý phiên bản với Git/GitHub, CI/CD cơ bản, debugging bằng
+                  Chrome DevTools, tối ưu Lighthouse score và Web Vitals.
+                </p>
+                <div
+                  class="skill-bar"
+                  role="progressbar"
+                  aria-valuenow="78"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label="Mức độ thành thạo Git & DevTools: 78%"
+                >
+                  <div class="skill-bar__fill" style="--skill-level: 78%;">
+                    <span class="skill-bar__label">78%</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- /Kỹ năng 4 -->
+
+          </ul>
+        </div>
+      </section>
+      <!-- /SKILLS -->
+
+    </main>
+    <!-- /MAIN CONTENT -->
+
+    <!-- ============================================================
+         FOOTER – Chân trang liên hệ
+         Chứa thông tin liên lạc, mạng xã hội và bản quyền
+         ============================================================ -->
+    <footer id="contact" class="site-footer" role="contentinfo">
+      <div class="container footer-container">
+
+        <!-- Tiêu đề chân trang -->
+        <h2 class="footer-heading">
+          <span aria-hidden="true">📬</span> Liên hệ với tôi
+        </h2>
+        <p class="footer-tagline">Hãy cùng tạo ra những điều tuyệt vời!</p>
+
+        <!-- Danh sách các kênh liên hệ -->
+        <address class="footer-contact-list">
+          <ul role="list" aria-label="Thông tin liên hệ">
+
+            <!-- Email -->
+            <li class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">✉️</span>
+              <a
+                href="mailto:nguyenvanal@email.com"
+                class="contact-item__link"
+                aria-label="Gửi email cho Nguyễn Văn An"
+              >
+                nguyenvanal@email.com
+              </a>
+            </li>
+
+            <!-- Số điện thoại -->
+            <li class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">📞</span>
+              <a
+                href="tel:+84901234567"
+                class="contact-item__link"
+                aria-label="Gọi điện cho Nguyễn Văn An"
+              >
+                +84 90 123 4567
+              </a>
+            </li>
+
+            <!-- GitHub -->
+            <li class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">🐙</span>
+              <a
+                href="https://github.com/nguyenvanan"
+                class="contact-item__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Xem GitHub của Nguyễn Văn An (mở tab mới)"
+              >
+                github.com/nguyenvanan
+              </a>
+            </li>
+
+            <!-- LinkedIn -->
+            <li class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">💼</span>
+              <a
+                href="https://linkedin.com/in/nguyenvanan"
+                class="contact-item__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Xem LinkedIn của Nguyễn Văn An (mở tab mới)"
+              >
+                linkedin.com/in/nguyenvanan
+              </a>
+            </li>
+
+          </ul>
+        </address>
+
+        <!-- Đường kẻ phân cách -->
+        <hr class="footer-divider" aria-hidden="true" />
+
+        <!-- Dòng bản quyền -->
+        <p class="footer-copyright">
+          <!-- Năm được cập nhật tự động bởi script.js -->
+          &copy; <span id="current-year">2026</span> Nguyễn Văn An.
+          Thiết kế &amp; phát triển bởi chính tôi. 🚀
+        </p>
+
+      </div>
+    </footer>
+    <!-- /FOOTER -->
+
+    <!-- ============================================================
+         JAVASCRIPT CHÍNH – Load cuối body để không chặn render
+         Xử lý tương tác, animation và các tính năng động
+         ============================================================ -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

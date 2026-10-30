@@ -97,6 +97,7 @@
 
   /* ── Transition ─────────────────────────────────────────────── */
   --ease: 0.2s ease;
+  --transition-speed: 0.3s;
 
   /* ── Layout ─────────────────────────────────────────────────── */
   --sidebar-width:  260px;    /* Chiều rộng cột aside */
@@ -374,7 +375,7 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 .btn:hover  { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.btn:active { transform: translateY(0); }
+.btn:active { transform: scale(0.96); }
 
 .btn--primary {
   background-color: var(--primary-color);
@@ -637,7 +638,13 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   border-radius: var(--border-radius-full);
   position: relative;
-  transition: width 0.8s ease-in-out;
+  transform-origin: left center;
+  animation: skill-bar-fill 1.2s ease-out both;
+}
+
+@keyframes skill-bar-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 .skill-bar__label {
   position: absolute;
@@ -677,11 +684,16 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   transition:
-    box-shadow var(--ease),
-    transform var(--ease),
-    border-color var(--ease);
+    transform var(--transition-speed),
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
 }
-.project-card:hover {
+.project-card:hover,
+.project-card[data-aos].aos-animate:hover {
+  transition:
+    transform var(--transition-speed),
+    box-shadow var(--transition-speed),
+    border-color var(--transition-speed);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
   border-color: var(--primary-color);
@@ -1024,7 +1036,6 @@ h1, h2, h3, h4 {
 /* Skip-to-main */
 .skip-link {
   position: absolute;
-  top: -100%;
   left: var(--sp-4);
   background: var(--primary-color);
   color: var(--text-inverse);
@@ -1032,9 +1043,11 @@ h1, h2, h3, h4 {
   border-radius: var(--border-radius-sm);
   font-weight: 600;
   z-index: 9999;
-  transition: top 0.2s;
+  top: var(--sp-4);
+  transform: translateY(calc(-100% - var(--sp-4)));
+  transition: transform var(--transition-speed);
 }
-.skip-link:focus { top: var(--sp-4); }
+.skip-link:focus { transform: translateY(0); }
 
 /* Focus ring */
 :focus-visible {

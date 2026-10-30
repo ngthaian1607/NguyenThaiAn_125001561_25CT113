@@ -61,6 +61,12 @@
 
     <!-- Stylesheet chính – đường dẫn tương đối vào thư mục css/ -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- AOS – hiệu ứng xuất hiện khi cuộn trang -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    />
   </head>
 
   <!-- ═══════════════════════════════════════════════════════════════
@@ -108,7 +114,7 @@
            │  <section> HERO – Banner giới thiệu đầu trang       │
            │  Chứa <figure> ảnh đại diện + thông tin cá nhân     │
            └──────────────────────────────────────────────────────┘ -->
-      <section id="hero" class="hero-section" aria-labelledby="hero-heading">
+      <section id="hero" class="hero-section" aria-labelledby="hero-heading" data-aos="fade-up">
         <div class="container hero-container">
 
           <!-- <figure> – Đơn vị hình ảnh độc lập (ảnh + chú thích)
@@ -172,6 +178,7 @@
         id="about"
         class="container about-layout"
         aria-labelledby="about-heading"
+        data-aos="fade-up"
       >
 
         <!-- ── <article> ABOUT – Tóm tắt bản thân ──────────────
@@ -180,6 +187,7 @@
         <article
           class="about-article"
           aria-labelledby="about-heading"
+          data-aos="fade-up"
         >
           <h2 id="about-heading" class="section-title">
             <span class="section-title__icon" aria-hidden="true">👤</span>
@@ -234,7 +242,7 @@
           </h2>
 
           <!-- Mỗi mục học vấn là một <article> con – đứng độc lập được -->
-          <article class="edu-item" aria-label="Bằng cử nhân Đại học Bách Khoa">
+          <article class="edu-item" aria-label="Bằng cử nhân Đại học Bách Khoa" data-aos="fade-up">
             <h3 class="edu-item__degree">Cử nhân Công nghệ Thông tin</h3>
             <p  class="edu-item__school">🏛️ Đại học Bách Khoa Hà Nội</p>
             <!-- <time> đánh dấu khoảng thời gian học (machine-readable) -->
@@ -246,7 +254,7 @@
             <p class="edu-item__note">GPA: 3.4 / 4.0 &middot; Tốt nghiệp Giỏi</p>
           </article>
 
-          <article class="edu-item" aria-label="Chứng chỉ Meta Front-End Developer">
+          <article class="edu-item" aria-label="Chứng chỉ Meta Front-End Developer" data-aos="fade-up">
             <h3 class="edu-item__degree">Meta Front-End Developer Certificate</h3>
             <p  class="edu-item__school">🏅 Coursera &times; Meta</p>
             <p  class="edu-item__period">
@@ -255,7 +263,7 @@
             </p>
           </article>
 
-          <article class="edu-item" aria-label="Chứng chỉ Google UX Design">
+          <article class="edu-item" aria-label="Chứng chỉ Google UX Design" data-aos="fade-up">
             <h3 class="edu-item__degree">Google UX Design Certificate</h3>
             <p  class="edu-item__school">🏅 Coursera &times; Google</p>
             <p  class="edu-item__period">
@@ -265,7 +273,7 @@
           </article>
 
           <!-- Thông tin cá nhân phụ -->
-          <section class="aside-meta" aria-label="Thông tin cá nhân">
+          <section class="aside-meta" aria-label="Thông tin cá nhân" data-aos="fade-up">
             <h3 class="aside-meta__title">📋 Thông tin</h3>
             <ul role="list" class="aside-meta__list">
               <li>
@@ -299,7 +307,7 @@
            │  <section> SKILLS – Danh sách kỹ năng công nghệ     │
            │  Mỗi kỹ năng là một <article> tự mô tả độc lập      │
            └──────────────────────────────────────────────────────┘ -->
-      <section id="skills" class="skills-section" aria-labelledby="skills-heading">
+      <section id="skills" class="skills-section" aria-labelledby="skills-heading" data-aos="fade-up">
         <div class="container">
 
           <h2 id="skills-heading" class="section-title">
@@ -313,7 +321,7 @@
 
             <!-- <article> Kỹ năng 1 – HTML5 & CSS3
                  Mỗi article là một đơn vị nội dung độc lập về một kỹ năng -->
-            <article class="skill-card" role="listitem" aria-label="Kỹ năng HTML5 và CSS3">
+            <article class="skill-card" role="listitem" aria-label="Kỹ năng HTML5 và CSS3" data-aos="fade-up">
               <span class="skill-card__icon" aria-hidden="true">🌐</span>
               <div class="skill-card__body">
                 <h3 class="skill-card__name">HTML5 &amp; CSS3</h3>
@@ -339,7 +347,7 @@
             <!-- /article Kỹ năng 1 -->
 
             <!-- <article> Kỹ năng 2 – JavaScript (ES6+) -->
-            <article class="skill-card" role="listitem" aria-label="Kỹ năng JavaScript ES6+">
+            <article class="skill-card" role="listitem" aria-label="Kỹ năng JavaScript ES6+" data-aos="fade-up">
               <span class="skill-card__icon" aria-hidden="true">⚡</span>
               <div class="skill-card__body">
                 <h3 class="skill-card__name">JavaScript (ES6+)</h3>
@@ -364,7 +372,7 @@
             <!-- /article Kỹ năng 2 -->
 
             <!-- <article> Kỹ năng 3 – React.js -->
-            <article class="skill-card" role="listitem" aria-label="Kỹ năng React.js">
+            <article class="skill-card" role="listitem" aria-label="Kỹ năng React.js" data-aos="fade-up">
               <span class="skill-card__icon" aria-hidden="true">⚛️</span>
               <div class="skill-card__body">
                 <h3 class="skill-card__name">React.js</h3>
@@ -389,7 +397,7 @@
             <!-- /article Kỹ năng 3 -->
 
             <!-- <article> Kỹ năng 4 – Git & DevTools -->
-            <article class="skill-card" role="listitem" aria-label="Kỹ năng Git và DevTools">
+            <article class="skill-card" role="listitem" aria-label="Kỹ năng Git và DevTools" data-aos="fade-up">
               <span class="skill-card__icon" aria-hidden="true">🔧</span>
               <div class="skill-card__body">
                 <h3 class="skill-card__name">Git &amp; DevTools</h3>
@@ -425,7 +433,7 @@
            │  <section> PROJECTS – Các dự án tiêu biểu           │
            │  Mỗi dự án là một <article> riêng biệt              │
            └──────────────────────────────────────────────────────┘ -->
-      <section id="projects" class="projects-section" aria-labelledby="projects-heading">
+      <section id="projects" class="projects-section" aria-labelledby="projects-heading" data-aos="fade-up">
         <div class="container">
 
           <h2 id="projects-heading" class="section-title">
@@ -438,7 +446,7 @@
 
             <!-- <article> Dự án 1 – E-commerce App
                  Đủ thông tin để tồn tại độc lập: tiêu đề, mô tả, thời gian, link -->
-            <article class="project-card" aria-labelledby="proj1-title">
+            <article class="project-card" aria-labelledby="proj1-title" data-aos="fade-up">
 
               <!-- <figure> bọc ảnh demo dự án + figcaption mô tả -->
               <figure class="project-figure">
@@ -503,7 +511,7 @@
             <!-- /article Dự án 1 -->
 
             <!-- <article> Dự án 2 – Dashboard Analytics -->
-            <article class="project-card" aria-labelledby="proj2-title">
+            <article class="project-card" aria-labelledby="proj2-title" data-aos="fade-up">
 
               <figure class="project-figure">
                 <img
@@ -656,6 +664,16 @@
 
 
     <!-- Script load cuối <body>: không chặn render, DOM đã sẵn sàng -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80,
+        disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      });
+    </script>
     <script src="js/script.js"></script>
 
   </body>

@@ -31,8 +31,8 @@
 (function initActiveNav() {
   // Lấy tất cả nav link có href bắt đầu bằng '#'
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  // Lấy tất cả section có id
-  const sections = document.querySelectorAll('section[id], footer[id]');
+  // Lấy tất cả section, article, aside và footer có id
+  const sections = document.querySelectorAll('section[id], article[id], aside[id], footer[id]');
 
   if (!navLinks.length || !sections.length) return;
 
@@ -71,8 +71,11 @@
    ───────────────────────────────────────────────────────────── */
 (function initScrollReveal() {
   // Các phần tử cần có hiệu ứng xuất hiện
+  // Bao gồm: skill-card (<article>), project-card (<article>),
+  // stat-item, about-text (<article>), edu-item (<article> trong <aside>),
+  // hero-info, hero-figure (<figure>)
   const revealTargets = document.querySelectorAll(
-    '.skill-card, .stat-item, .about-text, .hero-info, .hero-avatar-wrapper'
+    '.skill-card, .project-card, .stat-item, .about-text, .edu-item, .hero-info, .hero-figure'
   );
 
   if (!revealTargets.length) return;

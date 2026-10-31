@@ -104,6 +104,14 @@
           <li><a href="#contact"   class="nav-link nav-link--cta">Liên hệ</a></li>
         </ul>
 
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Chuyển đổi giữa giao diện sáng và tối"
+        >🌙 Đổi chế độ Sáng/Tối</button>
+
       </nav>
     </header>
     <!-- /header -->
@@ -488,6 +496,17 @@
             <button class="filter-btn" data-filter="frontend">Front-end</button>
             <button class="filter-btn" data-filter="tool">Công cụ</button>
           </div>
+
+          <!-- Input search: script.js lọc tiêu đề, danh mục và tag kỹ năng theo thời gian thực -->
+          <label class="project-search" for="search-input">
+            Tìm kiếm dự án hoặc kỹ năng
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Tìm kiếm dự án/kỹ năng..."
+              autocomplete="off"
+            />
+          </label>
 
           <!-- Container rỗng – renderProjects() sẽ chèn innerHTML vào đây -->
           <!-- id="projects-container" là điểm neo duy nhất JS cần -->

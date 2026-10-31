@@ -10,10 +10,11 @@
  *   §3. Máy tính xếp loại sinh viên (Grade Calculator)
  *   §4. Data Model – Mảng dữ liệu dự án (Array of Objects)
  *   §5. renderProjects() – Hàm tự động sinh giao diện (Render Function)
- *   §6. initProjectFilter() – Bộ lọc danh mục dự án
- *   §7. Active Nav Link (Intersection Observer)
- *   §8. Header Scroll State
- *   §9. Inject dynamic CSS cho trạng thái UI
+ *   §6. initThemeToggle() – Chuyển đổi giao diện sáng/tối
+ *   §7. initProjectFilter() – Bộ lọc danh mục và tìm kiếm dự án
+ *   §8. Active Nav Link (Intersection Observer)
+ *   §9. Header Scroll State
+ *   §10. Inject dynamic CSS cho trạng thái UI
  *
  * Lý do dùng 'use strict':
  *   - Bật chế độ nghiêm ngặt: ngăn khai báo biến ngầm (undeclared),
@@ -648,65 +649,84 @@ function renderProjects(projectList) {
 
 
 /* ─────────────────────────────────────────────────────────────────
-   §6. PROJECT FILTER – Bộ lọc danh mục dự án
-   ─────────────────────────────────────────────────────────────────
-   NGUYÊN TẮC ĐÓNG GÓI (Encapsulation):
-   Toàn bộ logic filter nằm trong IIFE này, không rò rỉ ra ngoài.
+   §6. DOM EVENTS – Chuyển theme, lọc danh mục và tìm kiếm dự án
+   ───────────────────────────────────────────────────────────────── */
+/*
+ * Luồng click giao diện:
+ * 1. Lấy nút và body từ DOM.
+ * 2. Chỉ gắn listener khi cả hai phần tử tồn tại.
+ * 3. Mỗi click đảo class dark-theme; CSS đổi các biến màu theo class đó.
+ * 4. Đồng bộ aria-pressed để trạng thái được công bố với screen reader.
+ */
+(function initThemeToggle() {
+  const themeToggle = document.querySelector('#theme-toggle');
+  const pageBody = document.body;
 
-   Luồng hoạt động:
-     Click nút filter
-       → Đọc data-filter attribute
-       → Lọc PROJECT_DATA bằng Array.filter()
-       → Gọi renderProjects() với kết quả đã lọc
-   ───────────────────────────────────────────────────────────── */
-(function initProjectFilter() {
-  // const: filterButtons là NodeList cố định sau khi query
-  const filterButtons = document.querySelectorAll('.filter-btn');
-
-  // Nếu không có nút lọc nào → không cần làm gì
-  if (!filterButtons.length) return;
-
-  // Gán event listener cho mỗi nút lọc
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      // ── Cập nhật trạng thái active của các nút ────────────
-      // Xóa class active khỏi TẤT CẢ nút trước
-      filterButtons.forEach(b => b.classList.remove('filter-btn--active'));
-      // Thêm class active cho nút vừa được click (this)
-      this.classList.add('filter-btn--active');
-
-      // ── Đọc giá trị filter từ data-filter attribute ───────
-      // const: filterValue không đổi trong xử lý click này
-      const filterValue = this.getAttribute('data-filter');
-
-      // ── Lọc dữ liệu bằng Array.filter() ──────────────────
-      // Array.filter(): trả về mảng MỚI chứa các phần tử thoả điều kiện
-      // → Không làm thay đổi PROJECT_DATA gốc (immutable pattern)
-      // → filtered: let vì được gán từ biểu thức điều kiện ternary
-      let filtered;
-
-      if (filterValue === 'all') {
-        // 'all': hiển thị toàn bộ → không cần lọc, truyền thẳng
-        filtered = PROJECT_DATA;
-      } else {
-        // Lọc: chỉ giữ lại project có category khớp với filterValue
-        // p.category === filterValue: so sánh bằng nghiêm ngặt (===)
-        filtered = PROJECT_DATA.filter(p => p.category === filterValue);
-      }
-
-      // Gọi renderProjects() với danh sách đã lọc
-      // → Đây là ví dụ điển hình của "truyền tham số hàm"
-      renderProjects(filtered);
+  // Guard cả nút lẫn body để trang vẫn chạy an toàn nếu thiếu markup.
+  if (themeToggle && pageBody) {
+    themeToggle.addEventListener('click', function () {
+      const isDarkTheme = pageBody.classList.toggle('dark-theme');
+      themeToggle.setAttribute('aria-pressed', String(isDarkTheme));
     });
+  }
+})();
+
+
+(function initProjectFilter() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const searchInput = document.querySelector('#search-input');
+  let activeCategory = 'all';
+  let searchTerm = '';
+
+  // Tính lại từ dữ liệu gốc để thao tác search/filter không làm mất kết quả.
+  function renderFilteredProjects() {
+    const normalizedTerm = searchTerm.trim().toLocaleLowerCase('vi');
+    const filteredProjects = PROJECT_DATA.filter(project => {
+      const matchesCategory =
+        activeCategory === 'all' || project.category === activeCategory;
+      const searchableText = [
+        project.title,
+        project.category,
+        ...project.tags,
+      ].join(' ').toLocaleLowerCase('vi');
+
+      return matchesCategory && searchableText.includes(normalizedTerm);
+    });
+
+    renderProjects(filteredProjects);
+  }
+
+  // Gắn listener riêng cho từng nút hiện có; thiếu nút không gây lỗi.
+  filterButtons.forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', function () {
+        filterButtons.forEach(filterButton => {
+          if (filterButton) filterButton.classList.remove('filter-btn--active');
+        });
+        this.classList.add('filter-btn--active');
+        activeCategory = this.getAttribute('data-filter') || 'all';
+        renderFilteredProjects();
+      });
+    }
   });
 
-  // ── Gọi render lần đầu khi trang tải xong ─────────────────
-  // Truyền toàn bộ PROJECT_DATA (chưa lọc) → hiển thị tất cả dự án
-  // Đây là lần gọi hàm đầu tiên, minh chứng cho nguyên tắc DRY:
-  // "Dữ liệu khai báo 1 lần, hàm gọi ở nhiều nơi"
-  renderProjects(PROJECT_DATA);
+  /*
+   * Luồng input tìm kiếm:
+   * 1. Đọc giá trị hiện tại từ ô input mỗi khi người dùng gõ, xóa hoặc dán.
+   * 2. renderFilteredProjects kết hợp từ khóa với danh mục đang chọn.
+   * 3. Array.filter tạo kết quả mới từ PROJECT_DATA, không sửa mảng gốc.
+   * 4. renderProjects cập nhật danh sách kết quả trong DOM.
+   */
+  if (searchInput) {
+    searchInput.addEventListener('input', function (event) {
+      searchTerm = event.currentTarget.value;
+      renderFilteredProjects();
+    });
+  }
 
-  console.log('[initProjectFilter] ✅ Đã khởi tạo bộ lọc và render lần đầu.');
+  // Render ban đầu cũng qua cùng hàm để thống nhất luồng cập nhật giao diện.
+  renderFilteredProjects();
+  console.log('[initProjectFilter] ✅ Đã khởi tạo lọc danh mục và tìm kiếm.');
 })();
 
 
@@ -824,4 +844,3 @@ function renderProjects(projectList) {
 
   document.head.appendChild(style);
 })();
-

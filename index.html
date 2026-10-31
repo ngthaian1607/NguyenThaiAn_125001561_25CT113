@@ -48,7 +48,7 @@
     <title>Nguyễn Văn An | Front-end Developer Portfolio</title>
 
     <!-- Favicon – icon hiển thị trên tab trình duyệt -->
-    <link rel="icon"             href="assets/icons/favicon.ico"    type="image/x-icon" />
+    <link rel="icon"             href="assets/icons/favicon.ico"        type="image/x-icon" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
 
     <!-- Google Fonts: Inter – font hiện đại, tối ưu đọc trên màn hình -->
@@ -73,6 +73,11 @@
        BODY – Toàn bộ nội dung hiển thị của trang
        ═══════════════════════════════════════════════════════════════ -->
   <body>
+
+    <!-- ── Skip Navigation Link (WCAG 2.1 SC 2.4.1 – Bypass Blocks) ──
+         Cho phép người dùng bàn phím / screen reader bỏ qua navbar,
+         nhảy thẳng đến nội dung chính. Ẩn bằng CSS, hiện khi :focus. -->
+    <a href="#main-content" class="skip-link">Bỏ qua điều hướng</a>
 
     <!-- ╔══════════════════════════════════════════════════════════╗
          ║  <header> – Phần đầu trang (logo + điều hướng chính)   ║
@@ -132,7 +137,8 @@
             <!-- <figcaption> – Chú thích chính thức cho <figure> trên -->
             <figcaption class="hero-figcaption">
               <span class="avatar-badge" aria-label="Trạng thái: Sẵn sàng làm việc">
-                ✅ Sẵn sàng làm việc
+                <!-- aria-hidden="true" trên emoji: screen reader đã có aria-label ở span cha -->
+                <span aria-hidden="true">✅</span> Sẵn sàng làm việc
               </span>
             </figcaption>
           </figure>
@@ -173,7 +179,10 @@
       <!-- /section#hero -->
 
 
-      <!-- <section> nhóm nội dung giới thiệu và thông tin bổ trợ -->
+      <!-- ┌──────────────────────────────────────────────────────┐
+           │  <section> ABOUT – Giới thiệu bản thân             │
+           │  (1 cột mobile / 2 cột desktop qua CSS Grid)        │
+           └──────────────────────────────────────────────────────┘ -->
       <section
         id="about"
         class="container about-layout"
@@ -183,19 +192,17 @@
 
         <!-- ── <article> ABOUT – Tóm tắt bản thân ──────────────
              <article> phù hợp vì khối này có thể đứng độc lập,
-             được trích dẫn hoặc chia sẻ riêng lẻ (như bài bio) -->
-        <article
-          class="about-article"
-          aria-labelledby="about-heading"
-          data-aos="fade-up"
-        >
+             được trích dẫn hoặc chia sẻ riêng lẻ (như bài bio).
+             Bỏ aria-labelledby trùng lặp với <section> cha —
+             screen reader chỉ cần nhãn ở cấp section là đủ. -->
+        <article class="about-article" data-aos="fade-up">
           <h2 id="about-heading" class="section-title">
             <span class="section-title__icon" aria-hidden="true">👤</span>
             Về tôi
           </h2>
           <div class="section-divider" aria-hidden="true"></div>
 
-          <!-- Đoạn văn tóm tắt bản thân – giữ nguyên nội dung gốc -->
+          <!-- Đoạn văn tóm tắt bản thân -->
           <p class="about-text">
             Tôi là một <strong>Front-end Developer</strong> với hơn
             <strong>3 năm kinh nghiệm</strong> xây dựng giao diện web hiện đại,
@@ -231,7 +238,8 @@
 
         <!-- ── <aside> EDUCATION – Thông tin bổ trợ / phụ ────────
              <aside> chứa nội dung liên quan nhưng không thuộc luồng
-             chính: học vấn, chứng chỉ, thông tin cá nhân bổ sung -->
+             chính: học vấn, chứng chỉ, thông tin cá nhân bổ sung.
+             id="education" để nav link #education cuộn đến đây. -->
         <aside
           id="education"
           class="aside-education"
@@ -244,9 +252,12 @@
           <!-- Mỗi mục học vấn là một <article> con – đứng độc lập được -->
           <article class="edu-item" aria-label="Bằng cử nhân Đại học Bách Khoa" data-aos="fade-up">
             <h3 class="edu-item__degree">Cử nhân Công nghệ Thông tin</h3>
-            <p  class="edu-item__school">🏛️ Đại học Bách Khoa Hà Nội</p>
+            <p class="edu-item__school">
+              <!-- aria-hidden="true" cho emoji trang trí -->
+              <span aria-hidden="true">🏛️</span> Đại học Bách Khoa Hà Nội
+            </p>
             <!-- <time> đánh dấu khoảng thời gian học (machine-readable) -->
-            <p  class="edu-item__period">
+            <p class="edu-item__period">
               <time datetime="2017-09">Tháng 9, 2017</time>
               &ndash;
               <time datetime="2021-06">Tháng 6, 2021</time>
@@ -256,8 +267,10 @@
 
           <article class="edu-item" aria-label="Chứng chỉ Meta Front-End Developer" data-aos="fade-up">
             <h3 class="edu-item__degree">Meta Front-End Developer Certificate</h3>
-            <p  class="edu-item__school">🏅 Coursera &times; Meta</p>
-            <p  class="edu-item__period">
+            <p class="edu-item__school">
+              <span aria-hidden="true">🏅</span> Coursera &times; Meta
+            </p>
+            <p class="edu-item__period">
               Cấp:
               <time datetime="2022-08">Tháng 8, 2022</time>
             </p>
@@ -265,8 +278,10 @@
 
           <article class="edu-item" aria-label="Chứng chỉ Google UX Design" data-aos="fade-up">
             <h3 class="edu-item__degree">Google UX Design Certificate</h3>
-            <p  class="edu-item__school">🏅 Coursera &times; Google</p>
-            <p  class="edu-item__period">
+            <p class="edu-item__school">
+              <span aria-hidden="true">🏅</span> Coursera &times; Google
+            </p>
+            <p class="edu-item__period">
               Cấp:
               <time datetime="2023-03">Tháng 3, 2023</time>
             </p>
@@ -274,7 +289,9 @@
 
           <!-- Thông tin cá nhân phụ -->
           <section class="aside-meta" aria-label="Thông tin cá nhân" data-aos="fade-up">
-            <h3 class="aside-meta__title">📋 Thông tin</h3>
+            <h3 class="aside-meta__title">
+              <span aria-hidden="true">📋</span> Thông tin
+            </h3>
             <ul role="list" class="aside-meta__list">
               <li>
                 <span class="meta-key">Ngày sinh:</span>
@@ -283,7 +300,7 @@
               </li>
               <li>
                 <span class="meta-key">Địa điểm:</span>
-                <span class="meta-val">Hà Nội, Việt Nam 🇻🇳</span>
+                <span class="meta-val">Hà Nội, Việt Nam <span aria-hidden="true">🇻🇳</span></span>
               </li>
               <li>
                 <span class="meta-key">Ngôn ngữ:</span>
@@ -336,7 +353,7 @@
                   aria-valuenow="92"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  aria-label="Mức độ thành thạo HTML5 & CSS3: 92%"
+                  aria-label="Mức độ thành thạo HTML5 &amp; CSS3: 92%"
                 >
                   <div class="skill-bar__fill" style="--skill-level: 92%;">
                     <span class="skill-bar__label">92%</span>
@@ -411,7 +428,7 @@
                   aria-valuenow="78"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  aria-label="Mức độ thành thạo Git & DevTools: 78%"
+                  aria-label="Mức độ thành thạo Git &amp; DevTools: 78%"
                 >
                   <div class="skill-bar__fill" style="--skill-level: 78%;">
                     <span class="skill-bar__label">78%</span>
@@ -492,7 +509,7 @@
                     class="btn btn--outline btn--sm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Xem source code ShopVN trên GitHub"
+                    aria-label="Xem source code ShopVN trên GitHub (mở tab mới)"
                   >
                     GitHub
                   </a>
@@ -501,7 +518,7 @@
                     class="btn btn--primary btn--sm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Xem demo live ShopVN"
+                    aria-label="Xem demo live ShopVN (mở tab mới)"
                   >
                     Live Demo
                   </a>
@@ -516,7 +533,7 @@
               <figure class="project-figure">
                 <img
                   src="https://picsum.photos/seed/dashboard/600/340"
-                  alt="Giao diện Dashboard Analytics hiển thị biểu đồ và số liệu"
+                  alt="Giao diện Dashboard Analytics hiển thị biểu đồ và số liệu thống kê"
                   class="project-img"
                   width="600"
                   height="340"
@@ -549,7 +566,7 @@
                     class="btn btn--outline btn--sm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Xem source code Dashboard trên GitHub"
+                    aria-label="Xem source code Dashboard trên GitHub (mở tab mới)"
                   >
                     GitHub
                   </a>
@@ -558,7 +575,7 @@
                     class="btn btn--primary btn--sm"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Xem demo live Dashboard"
+                    aria-label="Xem demo live Dashboard (mở tab mới)"
                   >
                     Live Demo
                   </a>
@@ -582,10 +599,10 @@
          ║  <footer> – Chân trang: thông tin liên hệ & bản quyền ║
          ║  id="contact" để nav link #contact cuộn đến đây        ║
          ╚══════════════════════════════════════════════════════════╝ -->
-    <footer id="contact" class="site-footer" role="contentinfo">
+    <footer id="contact" class="site-footer" role="contentinfo" aria-labelledby="contact-heading">
       <div class="container footer-container">
 
-        <h2 class="footer-heading">
+        <h2 id="contact-heading" class="footer-heading">
           <span aria-hidden="true">📬</span> Liên hệ với tôi
         </h2>
         <p class="footer-tagline">Hãy cùng tạo ra những điều tuyệt vời!</p>
@@ -655,7 +672,8 @@
         <!-- Dòng bản quyền – năm cập nhật tự động qua script.js -->
         <p class="footer-copyright">
           &copy; <span id="current-year">2026</span> Nguyễn Văn An.
-          Thiết kế &amp; phát triển bởi chính tôi. 🚀
+          Thiết kế &amp; phát triển bởi chính tôi.
+          <span aria-hidden="true">🚀</span>
         </p>
 
       </div>

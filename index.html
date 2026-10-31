@@ -116,6 +116,27 @@
     <main id="main-content">
 
       <!-- ┌──────────────────────────────────────────────────────┐
+           │  GREETING BANNER – Lời chào thời gian thực          │
+           │  Ẩn ban đầu (hidden), JS sẽ hiện và điền nội dung   │
+           └──────────────────────────────────────────────────────┘ -->
+      <div
+        id="greeting-banner"
+        class="greeting-banner"
+        role="status"
+        aria-live="polite"
+        aria-label="Lời chào theo thời gian"
+        hidden
+      >
+        <div class="container greeting-container">
+          <!-- JS sẽ điền emoji + lời chào vào đây -->
+          <p id="greeting-text" class="greeting-text" aria-live="polite"></p>
+          <!-- JS sẽ điền "Buổi sáng · 08:30" vào đây -->
+          <span id="greeting-period" class="greeting-period"></span>
+        </div>
+      </div>
+      <!-- /greeting-banner -->
+
+      <!-- ┌──────────────────────────────────────────────────────┐
            │  <section> HERO – Banner giới thiệu đầu trang       │
            │  Chứa <figure> ảnh đại diện + thông tin cá nhân     │
            └──────────────────────────────────────────────────────┘ -->
@@ -448,9 +469,10 @@
 
       <!-- ┌──────────────────────────────────────────────────────┐
            │  <section> PROJECTS – Các dự án tiêu biểu           │
-           │  Mỗi dự án là một <article> riêng biệt              │
+           │  Card HTML được TỰ ĐỘNG SINH bởi renderProjects()   │
+           │  trong js/script.js – KHÔNG viết card thủ công ở đây│
            └──────────────────────────────────────────────────────┘ -->
-      <section id="projects" class="projects-section" aria-labelledby="projects-heading" data-aos="fade-up">
+      <section id="projects" class="projects-section" aria-labelledby="projects-heading">
         <div class="container">
 
           <h2 id="projects-heading" class="section-title">
@@ -459,133 +481,26 @@
           </h2>
           <div class="section-divider" aria-hidden="true"></div>
 
-          <div class="projects-grid">
-
-            <!-- <article> Dự án 1 – E-commerce App
-                 Đủ thông tin để tồn tại độc lập: tiêu đề, mô tả, thời gian, link -->
-            <article class="project-card" aria-labelledby="proj1-title" data-aos="fade-up">
-
-              <!-- <figure> bọc ảnh demo dự án + figcaption mô tả -->
-              <figure class="project-figure">
-                <img
-                  src="https://picsum.photos/seed/ecommerce/600/340"
-                  alt="Giao diện trang E-commerce ShopVN trên màn hình desktop"
-                  class="project-img"
-                  width="600"
-                  height="340"
-                  loading="lazy"
-                />
-                <figcaption class="project-figcaption">
-                  Demo giao diện ShopVN – E-commerce App
-                </figcaption>
-              </figure>
-
-              <div class="project-card__body">
-                <h3 id="proj1-title" class="project-card__name">ShopVN – E-commerce App</h3>
-
-                <!-- <time> đánh dấu thời gian phát hành dự án -->
-                <p class="project-card__meta">
-                  Hoàn thành:
-                  <time datetime="2024-03">Tháng 3, 2024</time>
-                </p>
-
-                <p class="project-card__desc">
-                  Ứng dụng mua sắm trực tuyến full-stack với React, Node.js và
-                  MongoDB. Tích hợp thanh toán VNPay, tìm kiếm real-time và
-                  bảng quản trị dành riêng cho admin.
-                </p>
-
-                <!-- Danh sách công nghệ sử dụng -->
-                <ul class="project-tags" aria-label="Công nghệ sử dụng">
-                  <li class="tag">React</li>
-                  <li class="tag">Node.js</li>
-                  <li class="tag">MongoDB</li>
-                  <li class="tag">VNPay API</li>
-                </ul>
-
-                <div class="project-links">
-                  <a
-                    href="https://github.com/nguyenvanan/shopvn"
-                    class="btn btn--outline btn--sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Xem source code ShopVN trên GitHub (mở tab mới)"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://shopvn.demo.com"
-                    class="btn btn--primary btn--sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Xem demo live ShopVN (mở tab mới)"
-                  >
-                    Live Demo
-                  </a>
-                </div>
-              </div>
-            </article>
-            <!-- /article Dự án 1 -->
-
-            <!-- <article> Dự án 2 – Dashboard Analytics -->
-            <article class="project-card" aria-labelledby="proj2-title" data-aos="fade-up">
-
-              <figure class="project-figure">
-                <img
-                  src="https://picsum.photos/seed/dashboard/600/340"
-                  alt="Giao diện Dashboard Analytics hiển thị biểu đồ và số liệu thống kê"
-                  class="project-img"
-                  width="600"
-                  height="340"
-                  loading="lazy"
-                />
-                <figcaption class="project-figcaption">
-                  Demo giao diện Dashboard Analytics
-                </figcaption>
-              </figure>
-
-              <div class="project-card__body">
-                <h3 id="proj2-title" class="project-card__name">Analytics Dashboard</h3>
-                <p class="project-card__meta">
-                  Hoàn thành:
-                  <time datetime="2023-10">Tháng 10, 2023</time>
-                </p>
-                <p class="project-card__desc">
-                  Bảng điều khiển phân tích dữ liệu real-time với Chart.js,
-                  kết nối REST API, hỗ trợ xuất báo cáo CSV/PDF và dark mode.
-                </p>
-                <ul class="project-tags" aria-label="Công nghệ sử dụng">
-                  <li class="tag">React</li>
-                  <li class="tag">Chart.js</li>
-                  <li class="tag">REST API</li>
-                  <li class="tag">Tailwind CSS</li>
-                </ul>
-                <div class="project-links">
-                  <a
-                    href="https://github.com/nguyenvanan/dashboard"
-                    class="btn btn--outline btn--sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Xem source code Dashboard trên GitHub (mở tab mới)"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://dashboard.demo.com"
-                    class="btn btn--primary btn--sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Xem demo live Dashboard (mở tab mới)"
-                  >
-                    Live Demo
-                  </a>
-                </div>
-              </div>
-            </article>
-            <!-- /article Dự án 2 -->
-
+          <!-- Thanh lọc danh mục – JS sẽ lắng nghe sự kiện click -->
+          <div class="filter-bar" role="group" aria-label="Lọc dự án theo danh mục">
+            <button class="filter-btn filter-btn--active" data-filter="all">Tất cả</button>
+            <button class="filter-btn" data-filter="fullstack">Full-stack</button>
+            <button class="filter-btn" data-filter="frontend">Front-end</button>
+            <button class="filter-btn" data-filter="tool">Công cụ</button>
           </div>
-          <!-- /projects-grid -->
+
+          <!-- Container rỗng – renderProjects() sẽ chèn innerHTML vào đây -->
+          <!-- id="projects-container" là điểm neo duy nhất JS cần -->
+          <div
+            id="projects-container"
+            class="projects-grid"
+            role="list"
+            aria-label="Danh sách dự án"
+            aria-live="polite"
+          >
+            <!-- Nội dung được tạo động bởi JavaScript -->
+          </div>
+          <!-- /projects-container -->
 
         </div>
       </section>

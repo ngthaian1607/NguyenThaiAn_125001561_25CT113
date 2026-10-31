@@ -1,19 +1,19 @@
-/* ═══════════════════════════════════════════════════════════════════
-   style.css – Portfolio cá nhân · Design System + Mobile-First
-   Tác giả : Nguyễn Văn An – MSSV: 125001561 – Lớp: 25CT113
-   Cập nhật: 2026-10-31
-   Triết lý : Mobile-First → viết CSS cơ bản cho mobile,
-              dùng @media (min-width: …) để mở rộng lên màn hình lớn hơn.
-   Quy tắc  : Chỉ CSS Grid & Flexbox – KHÔNG float / display:table.
-              Mọi màu & khoảng cách đều qua var() từ Design System.
-   Thứ tự   : Reset → Variables → Base/Typography → Layout →
-              Components/Cards → Animations → Media Queries
-   ═══════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   style.css â€“ Portfolio cÃ¡ nhÃ¢n Â· Design System + Mobile-First
+   TÃ¡c giáº£ : Nguyá»…n VÄƒn An â€“ MSSV: 125001561 â€“ Lá»›p: 25CT113
+   Cáº­p nháº­t: 2026-10-31
+   Triáº¿t lÃ½ : Mobile-First â†’ viáº¿t CSS cÆ¡ báº£n cho mobile,
+              dÃ¹ng @media (min-width: â€¦) Ä‘á»ƒ má»Ÿ rá»™ng lÃªn mÃ n hÃ¬nh lá»›n hÆ¡n.
+   Quy táº¯c  : Chá»‰ CSS Grid & Flexbox â€“ KHÃ”NG float / display:table.
+              Má»i mÃ u & khoáº£ng cÃ¡ch Ä‘á»u qua var() tá»« Design System.
+   Thá»© tá»±   : Reset â†’ Variables â†’ Base/Typography â†’ Layout â†’
+              Components/Cards â†’ Animations â†’ Media Queries
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 
-/* ───────────────────────────────────────────────────────────────────
-   §1. RESET & BOX MODEL
-   ─────────────────────────────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Â§1. RESET & BOX MODEL
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *,
 *::before,
 *::after {
@@ -24,10 +24,10 @@
 
 ul[role="list"] { list-style: none; }
 
-/* Responsive images (yêu cầu bắt buộc)
-   max-width: 100%  → ảnh không bao giờ tràn khung chứa
-   height: auto     → giữ đúng tỉ lệ gốc
-   display: block   → loại bỏ khoảng trắng inline mặc định */
+/* Responsive images (yÃªu cáº§u báº¯t buá»™c)
+   max-width: 100%  â†’ áº£nh khÃ´ng bao giá» trÃ n khung chá»©a
+   height: auto     â†’ giá»¯ Ä‘Ãºng tá»‰ lá»‡ gá»‘c
+   display: block   â†’ loáº¡i bá» khoáº£ng tráº¯ng inline máº·c Ä‘á»‹nh */
 img {
   max-width: 100%;
   height: auto;
@@ -40,57 +40,57 @@ a {
 }
 
 
-/* ───────────────────────────────────────────────────────────────────
-   §2. DESIGN SYSTEM – CSS CUSTOM PROPERTIES
-   ───────────────────────────────────────────────────────────────────
-   Toàn bộ token thiết kế (màu, khoảng cách, bo góc, font, bóng đổ)
-   được khai báo tập trung tại :root.
-   Quy ước đặt tên:
-     --primary-color     màu nhấn chính
-     --secondary-color   màu nhấn phụ / accent
-     --bg-body           nền trang tổng thể
-     --bg-card           nền card / panel
-     --text-main         văn bản chính
-     --spacing-base      đơn vị khoảng cách cơ sở (= 8px)
-     --border-radius     bo góc chuẩn của component
-   ─────────────────────────────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Â§2. DESIGN SYSTEM â€“ CSS CUSTOM PROPERTIES
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   ToÃ n bá»™ token thiáº¿t káº¿ (mÃ u, khoáº£ng cÃ¡ch, bo gÃ³c, font, bÃ³ng Ä‘á»•)
+   Ä‘Æ°á»£c khai bÃ¡o táº­p trung táº¡i :root.
+   Quy Æ°á»›c Ä‘áº·t tÃªn:
+     --primary-color     mÃ u nháº¥n chÃ­nh
+     --secondary-color   mÃ u nháº¥n phá»¥ / accent
+     --bg-body           ná»n trang tá»•ng thá»ƒ
+     --bg-card           ná»n card / panel
+     --text-main         vÄƒn báº£n chÃ­nh
+     --spacing-base      Ä‘Æ¡n vá»‹ khoáº£ng cÃ¡ch cÆ¡ sá»Ÿ (= 8px)
+     --border-radius     bo gÃ³c chuáº©n cá»§a component
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
-  /* ── Màu sắc chính (Color Palette) ──────────────────────────── */
-  --primary-color:       #4f46e5;   /* Indigo 600  – màu nhấn chính   */
-  --primary-color-dark:  #3730a3;   /* Indigo 800  – hover / pressed   */
-  --primary-color-light: #818cf8;   /* Indigo 400  – tint nhẹ          */
-  --secondary-color:     #06b6d4;   /* Cyan 500    – màu nhấn phụ      */
-  --secondary-color-dark:#0891b2;   /* Cyan 600    – hover secondary   */
+  /* â”€â”€ MÃ u sáº¯c chÃ­nh (Color Palette) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --primary-color:       #4f46e5;   /* Indigo 600  â€“ mÃ u nháº¥n chÃ­nh   */
+  --primary-color-dark:  #3730a3;   /* Indigo 800  â€“ hover / pressed   */
+  --primary-color-light: #818cf8;   /* Indigo 400  â€“ tint nháº¹          */
+  --secondary-color:     #06b6d4;   /* Cyan 500    â€“ mÃ u nháº¥n phá»¥      */
+  --secondary-color-dark:#0891b2;   /* Cyan 600    â€“ hover secondary   */
 
-  /* ── Nền (Backgrounds) ─────────────────────────────────────── */
-  --bg-body:   #f8fafc;   /* Nền tổng thể trang (Slate 50)            */
-  --bg-card:   #ffffff;   /* Nền card, panel, sidebar (trắng)          */
-  --bg-subtle: #f1f5f9;   /* Nền phụ nhẹ (Slate 100)                  */
+  /* â”€â”€ Ná»n (Backgrounds) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --bg-body:   #f8fafc;   /* Ná»n tá»•ng thá»ƒ trang (Slate 50)            */
+  --bg-card:   #ffffff;   /* Ná»n card, panel, sidebar (tráº¯ng)          */
+  --bg-subtle: #f1f5f9;   /* Ná»n phá»¥ nháº¹ (Slate 100)                  */
 
-  /* ── Văn bản (Text) ─────────────────────────────────────────── */
-  --text-main:    #1e293b;   /* Văn bản chính (Slate 800)             */
-  --text-muted:   #64748b;   /* Văn bản phụ / placeholder (Slate 500) */
-  --text-heading: #0f172a;   /* Tiêu đề đậm (Slate 900)              */
-  --text-inverse: #ffffff;   /* Văn bản trên nền tối                 */
+  /* â”€â”€ VÄƒn báº£n (Text) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --text-main:    #1e293b;   /* VÄƒn báº£n chÃ­nh (Slate 800)             */
+  --text-muted:   #64748b;   /* VÄƒn báº£n phá»¥ / placeholder (Slate 500) */
+  --text-heading: #0f172a;   /* TiÃªu Ä‘á» Ä‘áº­m (Slate 900)              */
+  --text-inverse: #ffffff;   /* VÄƒn báº£n trÃªn ná»n tá»‘i                 */
 
-  /* ── Viền (Borders) ─────────────────────────────────────────── */
-  --color-border: #e2e8f0;   /* Viền nhẹ (Slate 200)                 */
+  /* â”€â”€ Viá»n (Borders) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --color-border: #e2e8f0;   /* Viá»n nháº¹ (Slate 200)                 */
 
-  /* ── Màu trạng thái (Semantic colors) ─────────────────────── */
+  /* â”€â”€ MÃ u tráº¡ng thÃ¡i (Semantic colors) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   --color-success:    #16a34a;   /* Green 600                         */
   --color-success-bg: #dcfce7;   /* Green 100                         */
   --color-success-bd: #bbf7d0;   /* Green 200                         */
-  --color-footer-bg1: #0f172a;   /* Slate 900 – gradient footer đầu  */
-  --color-footer-bg2: #1e1b4b;   /* Indigo 950 – gradient footer cuối*/
+  --color-footer-bg1: #0f172a;   /* Slate 900 â€“ gradient footer Ä‘áº§u  */
+  --color-footer-bg2: #1e1b4b;   /* Indigo 950 â€“ gradient footer cuá»‘i*/
   --color-footer-txt: #94a3b8;   /* Slate 400                         */
   --color-footer-lnk: #cbd5e1;   /* Slate 300                         */
-  --color-footer-cp:  #475569;   /* Slate 600 – copyright text        */
+  --color-footer-cp:  #475569;   /* Slate 600 â€“ copyright text        */
 
-  /* ── Hệ thống Font ──────────────────────────────────────────── */
+  /* â”€â”€ Há»‡ thá»‘ng Font â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', 'Consolas', monospace;
 
-  /* ── Cỡ chữ (Type Scale – Perfect Fourth) ─────────────────── */
+  /* â”€â”€ Cá»¡ chá»¯ (Type Scale â€“ Perfect Fourth) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   --text-xs:   0.75rem;    /*  12px */
   --text-sm:   0.875rem;   /*  14px */
   --text-base: 1rem;       /*  16px */
@@ -99,53 +99,53 @@ a {
   --text-2xl:  1.5rem;     /*  24px */
   --text-3xl:  1.875rem;   /*  30px */
   --text-4xl:  2.25rem;    /*  36px */
-  --text-5xl:  3rem;       /*  48px – dùng trên desktop lớn           */
+  --text-5xl:  3rem;       /*  48px â€“ dÃ¹ng trÃªn desktop lá»›n           */
 
-  /* ── Spacing Scale (base = 8px) ────────────────────────────── */
-  --spacing-base: 8px;     /* Đơn vị cơ sở – mọi khoảng cách là bội số */
-  --sp-1:   4px;           /* 0.5×  base                               */
-  --sp-2:   8px;           /* 1×    base  = --spacing-base             */
-  --sp-3:  12px;           /* 1.5×  base                               */
-  --sp-4:  16px;           /* 2×    base                               */
-  --sp-5:  20px;           /* 2.5×  base                               */
-  --sp-6:  24px;           /* 3×    base  – gap Grid chuẩn             */
-  --sp-8:  32px;           /* 4×    base                               */
-  --sp-10: 40px;           /* 5×    base                               */
-  --sp-12: 48px;           /* 6×    base                               */
-  --sp-16: 64px;           /* 8×    base                               */
+  /* â”€â”€ Spacing Scale (base = 8px) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --spacing-base: 8px;     /* ÄÆ¡n vá»‹ cÆ¡ sá»Ÿ â€“ má»i khoáº£ng cÃ¡ch lÃ  bá»™i sá»‘ */
+  --sp-1:   4px;           /* 0.5Ã—  base                               */
+  --sp-2:   8px;           /* 1Ã—    base  = --spacing-base             */
+  --sp-3:  12px;           /* 1.5Ã—  base                               */
+  --sp-4:  16px;           /* 2Ã—    base                               */
+  --sp-5:  20px;           /* 2.5Ã—  base                               */
+  --sp-6:  24px;           /* 3Ã—    base  â€“ gap Grid chuáº©n             */
+  --sp-8:  32px;           /* 4Ã—    base                               */
+  --sp-10: 40px;           /* 5Ã—    base                               */
+  --sp-12: 48px;           /* 6Ã—    base                               */
+  --sp-16: 64px;           /* 8Ã—    base                               */
 
-  /* ── Border Radius ──────────────────────────────────────────── */
-  --border-radius:      12px;     /* Bo góc chuẩn của component (card…) */
-  --border-radius-sm:    6px;     /* Bo góc nhỏ (badge, input…)         */
-  --border-radius-lg:   16px;     /* Bo góc lớn (section card…)         */
-  --border-radius-xl:   24px;     /* Bo góc rất lớn                     */
-  --border-radius-full: 9999px;   /* Tròn hoàn toàn (pill, avatar…)    */
+  /* â”€â”€ Border Radius â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --border-radius:      12px;     /* Bo gÃ³c chuáº©n cá»§a component (cardâ€¦) */
+  --border-radius-sm:    6px;     /* Bo gÃ³c nhá» (badge, inputâ€¦)         */
+  --border-radius-lg:   16px;     /* Bo gÃ³c lá»›n (section cardâ€¦)         */
+  --border-radius-xl:   24px;     /* Bo gÃ³c ráº¥t lá»›n                     */
+  --border-radius-full: 9999px;   /* TrÃ²n hoÃ n toÃ n (pill, avatarâ€¦)    */
 
-  /* ── Shadows ────────────────────────────────────────────────── */
+  /* â”€â”€ Shadows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
   --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
   --shadow-lg: 0 10px 15px rgba(0,0,0,.07), 0 4px 6px rgba(0,0,0,.05);
 
-  /* ── Transition ─────────────────────────────────────────────── */
+  /* â”€â”€ Transition â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   --ease:             0.2s ease;
   --transition-speed: 0.3s;
 
-  /* ── Layout ─────────────────────────────────────────────────── */
-  --sidebar-width:  260px;    /* Chiều rộng cột aside */
-  --container-max: 1140px;    /* Max-width nội dung   */
-  --header-height:  64px;     /* Chiều cao header (dùng tính offset sticky) */
+  /* â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  --sidebar-width:  260px;    /* Chiá»u rá»™ng cá»™t aside */
+  --container-max: 1140px;    /* Max-width ná»™i dung   */
+  --header-height:  64px;     /* Chiá»u cao header (dÃ¹ng tÃ­nh offset sticky) */
 
-  /* ── Màu alpha đặc biệt (dùng rgba thay thế bằng token) ─────── */
+  /* â”€â”€ MÃ u alpha Ä‘áº·c biá»‡t (dÃ¹ng rgba thay tháº¿ báº±ng token) â”€â”€â”€â”€â”€â”€â”€ */
   --bg-header-glass: rgba(255, 255, 255, 0.93); /* header backdrop glass  */
   --bg-footer-line:  rgba(255, 255, 255, 0.1);  /* footer divider alpha   */
 }
 
 
-/* ───────────────────────────────────────────────────────────────────
-   §3. BASE – Typography & Body
-   ─────────────────────────────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Â§3. BASE â€“ Typography & Body
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 html {
-  /* scroll-behavior: smooth – cuộn mượt khi nhấn anchor link */
+  /* scroll-behavior: smooth â€“ cuá»™n mÆ°á»£t khi nháº¥n anchor link */
   scroll-behavior: smooth;
   font-size: 16px;
   overflow-x: hidden;
@@ -160,7 +160,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Heading styles – áp dụng chung h1 đến h4 */
+/* Heading styles â€“ Ã¡p dá»¥ng chung h1 Ä‘áº¿n h4 */
 h1, h2, h3, h4 {
   color: var(--text-heading);
   line-height: 1.25;
@@ -168,9 +168,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ───────────────────────────────────────────────────────────────────
-   §4. LAYOUT – Container & Grid Helpers
-   ─────────────────────────────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Â§4. LAYOUT â€“ Container & Grid Helpers
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -179,9 +179,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §5. HEADER & NAVBAR
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§5. HEADER & NAVBAR
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .site-header {
   position: sticky;
   top: 0;
@@ -192,8 +192,8 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
 }
 
-/* FLEXBOX: Navbar ──────────────────────────────────────────────────
-   Mobile-first: mặc định xếp DỌC (column) → Desktop: NGANG (row)  */
+/* FLEXBOX: Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Mobile-first: máº·c Ä‘á»‹nh xáº¿p Dá»ŒC (column) â†’ Desktop: NGANG (row)  */
 .navbar {
   display: flex;
   flex-direction: column;
@@ -204,7 +204,7 @@ h1, h2, h3, h4 {
   padding: var(--sp-3) var(--sp-4);
 }
 
-/* Logo / thương hiệu */
+/* Logo / thÆ°Æ¡ng hiá»‡u */
 .nav-brand {
   font-size: var(--text-xl);
   font-weight: 700;
@@ -219,7 +219,7 @@ h1, h2, h3, h4 {
 }
 .nav-brand:hover { color: var(--primary-color-dark); }
 
-/* FLEXBOX: Danh sách nav-links */
+/* FLEXBOX: Danh sÃ¡ch nav-links */
 .nav-links {
   display: flex;
   align-items: center;
@@ -229,7 +229,7 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-/* Mỗi link điều hướng – vùng chạm ≥ 44px theo WCAG 2.5.5 */
+/* Má»—i link Ä‘iá»u hÆ°á»›ng â€“ vÃ¹ng cháº¡m â‰¥ 44px theo WCAG 2.5.5 */
 .nav-link {
   display: inline-flex;
   align-items: center;
@@ -246,7 +246,7 @@ h1, h2, h3, h4 {
   background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
 }
 
-/* Link CTA nổi bật */
+/* Link CTA ná»•i báº­t */
 .nav-link--cta {
   color: var(--text-inverse);
   background-color: var(--primary-color);
@@ -260,9 +260,48 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §6. HERO SECTION
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§6. GREETING BANNER (Real-time Greeting â€“ Ä‘iá»u khiá»ƒn bá»Ÿi JS)
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Banner nÃ y áº©n máº·c Ä‘á»‹nh (display:none khi cÃ³ attr [hidden]).
+   JavaScript sáº½ gá»i removeAttribute('hidden') vÃ  thÃªm data-period
+   Ä‘á»ƒ CSS inject tá»« script.js tÃ´ mÃ u Ä‘Ãºng theo thá»i gian.
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.greeting-banner {
+  /* [hidden] Ä‘Æ°á»£c CSS reset cá»§a trÃ¬nh duyá»‡t áº©n báº±ng display:none.
+     Khi JS gá»i removeAttribute('hidden'), banner hiá»‡n ra vá»›i styles nÃ y. */
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--sp-2);
+}
+
+.greeting-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.greeting-text {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0;
+}
+
+.greeting-period {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 400;
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--sp-3);
+}
+
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§7. HERO SECTION
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-section {
   background: linear-gradient(
     135deg,
@@ -273,7 +312,7 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid var(--color-border);
 }
 
-/* FLEXBOX: Hero – Mobile-first: xếp DỌC */
+/* FLEXBOX: Hero â€“ Mobile-first: xáº¿p Dá»ŒC */
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -284,7 +323,7 @@ h1, h2, h3, h4 {
 
 .hero-figure { flex-shrink: 0; }
 
-/* Ảnh đại diện bo tròn */
+/* áº¢nh Ä‘áº¡i diá»‡n bo trÃ²n */
 .hero-avatar {
   width: 160px;
   height: 160px;
@@ -294,7 +333,7 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 0 4px var(--primary-color), var(--shadow-lg);
 }
 
-/* Badge trạng thái */
+/* Badge tráº¡ng thÃ¡i */
 .hero-figcaption { margin-top: var(--sp-3); }
 .avatar-badge {
   display: inline-block;
@@ -307,7 +346,7 @@ h1, h2, h3, h4 {
   border: 1px solid var(--color-success-bd);
 }
 
-/* Thông tin cá nhân */
+/* ThÃ´ng tin cÃ¡ nhÃ¢n */
 .hero-info { flex: 1; }
 
 .hero-greeting {
@@ -330,7 +369,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-/* FLEXBOX: Nhóm nút CTA */
+/* FLEXBOX: NhÃ³m nÃºt CTA */
 .hero-actions {
   display: flex;
   align-items: center;
@@ -340,9 +379,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §7. BUTTONS
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§8. BUTTONS
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -395,9 +434,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §8. SECTION TITLES & DIVIDER
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§9. SECTION TITLES & DIVIDER
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .section-title {
   font-size: var(--text-2xl);
   color: var(--text-heading);
@@ -417,12 +456,12 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §9. ABOUT LAYOUT  (CSS GRID – 2 cột trên Desktop)
-   ───────────────────────────────────────────────────────────────────
-   Mobile-first: mặc định 1 CỘT DỌC
-   → Breakpoint ≥ 900px: Grid 2 cột (1fr + 260px)
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§10. ABOUT LAYOUT  (CSS GRID â€“ 2 cá»™t trÃªn Desktop)
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Mobile-first: máº·c Ä‘á»‹nh 1 Cá»˜T Dá»ŒC
+   â†’ Breakpoint â‰¥ 900px: Grid 2 cá»™t (1fr + 260px)
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .about-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -484,9 +523,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §10. ASIDE – Education & Thông tin cá nhân
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§11. ASIDE â€“ Education & ThÃ´ng tin cÃ¡ nhÃ¢n
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .aside-education {
   background-color: var(--bg-card);
   border: 1px solid var(--color-border);
@@ -510,7 +549,7 @@ h1, h2, h3, h4 {
 }
 .edu-item:last-of-type { border-bottom: none; }
 
-/* edu-item text variants – gộp chung font-size/color tương tự */
+/* edu-item text variants â€“ gá»™p chung font-size/color tÆ°Æ¡ng tá»± */
 .edu-item__degree {
   font-size: var(--text-sm);
   font-weight: 600;
@@ -523,7 +562,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   margin-bottom: var(--sp-1);
 }
-/* edu-item__period và edu-item__note cùng font-size + color → gộp */
+/* edu-item__period vÃ  edu-item__note cÃ¹ng font-size + color â†’ gá»™p */
 .edu-item__period,
 .edu-item__note {
   font-size: var(--text-xs);
@@ -548,14 +587,14 @@ h1, h2, h3, h4 {
   font-size: var(--text-xs);
 }
 .aside-meta__list li:last-child { border-bottom: none; }
-/* meta-key và meta-val – gộp font-size qua parent li */
+/* meta-key vÃ  meta-val â€“ gá»™p font-size qua parent li */
 .meta-key { color: var(--text-muted); white-space: nowrap; }
 .meta-val  { color: var(--text-main);  font-weight: 500; }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §11. SKILLS SECTION
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§12. SKILLS SECTION
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .skills-section {
   background-color: var(--bg-body);
   padding-block: var(--sp-10);
@@ -563,15 +602,15 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid var(--color-border);
 }
 
-/* CSS GRID: Lưới kỹ năng ────────────────────────────────────────────
-   Mobile: 1 cột; auto-fill tự điều chỉnh số cột khi màn hình lớn hơn */
+/* CSS GRID: LÆ°á»›i ká»¹ nÄƒng â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Mobile: 1 cá»™t; auto-fill tá»± Ä‘iá»u chá»‰nh sá»‘ cá»™t khi mÃ n hÃ¬nh lá»›n hÆ¡n */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: var(--sp-5);
 }
 
-/* CARD: Thẻ kỹ năng */
+/* CARD: Tháº» ká»¹ nÄƒng */
 .skill-card {
   display: flex;
   align-items: flex-start;
@@ -611,7 +650,7 @@ h1, h2, h3, h4 {
   margin-bottom: var(--sp-3);
 }
 
-/* Thanh tiến độ */
+/* Thanh tiáº¿n Ä‘á»™ */
 .skill-bar {
   background-color: var(--color-border);
   border-radius: var(--border-radius-full);
@@ -619,7 +658,7 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 .skill-bar__fill {
-  width: var(--skill-level);   /* giá trị đặt qua inline style HTML */
+  width: var(--skill-level);   /* giÃ¡ trá»‹ Ä‘áº·t qua inline style HTML */
   height: 100%;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   border-radius: var(--border-radius-full);
@@ -638,23 +677,23 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §12. PROJECTS SECTION
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§13. PROJECTS SECTION
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .projects-section {
   padding-block: var(--sp-10);
   background-color: var(--bg-card);
 }
 
-/* CSS GRID: Lưới dự án ──────────────────────────────────────────────
-   Mobile: 1 cột; auto-fit gộp track khi màn hình đủ rộng */
+/* CSS GRID: LÆ°á»›i dá»± Ã¡n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Mobile: 1 cá»™t; auto-fit gá»™p track khi mÃ n hÃ¬nh Ä‘á»§ rá»™ng */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--sp-6);
 }
 
-/* CARD: Thẻ dự án */
+/* CARD: Tháº» dá»± Ã¡n */
 .project-card {
   background-color: var(--bg-card);
   border: 1px solid var(--color-border);
@@ -668,7 +707,7 @@ h1, h2, h3, h4 {
     box-shadow var(--transition-speed),
     border-color var(--transition-speed);
 }
-/* Gộp 2 selector hover trùng lặp thành 1 */
+/* Gá»™p 2 selector hover trÃ¹ng láº·p thÃ nh 1 */
 .project-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
@@ -707,7 +746,7 @@ h1, h2, h3, h4 {
   font-weight: 700;
   color: var(--text-heading);
 }
-/* project-card__meta và project-card__desc cùng font-size → gộp base */
+/* project-card__meta vÃ  project-card__desc cÃ¹ng font-size â†’ gá»™p base */
 .project-card__meta,
 .project-card__desc {
   font-size: var(--text-sm);
@@ -719,7 +758,7 @@ h1, h2, h3, h4 {
   flex: 1;
 }
 
-/* FLEXBOX: Tags công nghệ */
+/* FLEXBOX: Tags cÃ´ng nghá»‡ */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -746,9 +785,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §13. FOOTER / CONTACT SECTION
-   ─────────────────────────────────────────────────────────────────── */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§14. FOOTER / CONTACT SECTION
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .site-footer {
   background: linear-gradient(135deg, var(--color-footer-bg1) 0%, var(--color-footer-bg2) 100%);
   color: var(--color-footer-txt);
@@ -794,7 +833,7 @@ h1, h2, h3, h4 {
   transition: color var(--ease);
   text-decoration: underline;
   text-underline-offset: 3px;
-  /* Vùng chạm tối thiểu 44px */
+  /* VÃ¹ng cháº¡m tá»‘i thiá»ƒu 44px */
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -814,9 +853,9 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §14. ANIMATIONS
-   ═══════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§15. ANIMATIONS
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Skill bar fill animation */
 @keyframes skill-bar-fill {
@@ -825,36 +864,36 @@ h1, h2, h3, h4 {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §15. MEDIA QUERIES – MOBILE-FIRST BREAKPOINTS
-   ═══════════════════════════════════════════════════════════════════
-   Chiến lược: Viết CSS mặc định CHO MOBILE trước.
-   Dùng (min-width) để mở rộng dần lên màn hình lớn hơn.
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§16. MEDIA QUERIES â€“ MOBILE-FIRST BREAKPOINTS
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Chiáº¿n lÆ°á»£c: Viáº¿t CSS máº·c Ä‘á»‹nh CHO MOBILE trÆ°á»›c.
+   DÃ¹ng (min-width) Ä‘á»ƒ má»Ÿ rá»™ng dáº§n lÃªn mÃ n hÃ¬nh lá»›n hÆ¡n.
 
-   Hệ thống Breakpoint:
-   ┌────────────────────────────────────────────────────────┐
-   │  < 768px   → Mobile   (mặc định, không cần @media)    │
-   │  ≥ 768px   → Tablet   @media screen (min-width: 768px) │
-   │  ≥ 900px   → Tablet L @media screen (min-width: 900px) │
-   │  ≥ 1024px  → Desktop  @media screen (min-width:1024px) │
-   └────────────────────────────────────────────────────────┘
-   ═══════════════════════════════════════════════════════════════════ */
+   Há»‡ thá»‘ng Breakpoint:
+   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   â”‚  < 768px   â†’ Mobile   (máº·c Ä‘á»‹nh, khÃ´ng cáº§n @media)    â”‚
+   â”‚  â‰¥ 768px   â†’ Tablet   @media screen (min-width: 768px) â”‚
+   â”‚  â‰¥ 900px   â†’ Tablet L @media screen (min-width: 900px) â”‚
+   â”‚  â‰¥ 1024px  â†’ Desktop  @media screen (min-width:1024px) â”‚
+   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ══════════════════════════════════════════════════════════════
-   BREAKPOINT: ≥ 768px – Tablet
-   ── Navbar: chuyển sang NGANG (row)
-   ── Hero: chuyển sang NGANG (row)
-   ── Container: tăng padding
-   ══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BREAKPOINT: â‰¥ 768px â€“ Tablet
+   â”€â”€ Navbar: chuyá»ƒn sang NGANG (row)
+   â”€â”€ Hero: chuyá»ƒn sang NGANG (row)
+   â”€â”€ Container: tÄƒng padding
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (min-width: 768px) {
 
-  /* §15.1 Container: tăng padding khi có thêm không gian */
+  /* Â§15.1 Container: tÄƒng padding khi cÃ³ thÃªm khÃ´ng gian */
   .container {
     padding-inline: var(--sp-6);
   }
 
-  /* §15.2 Navbar: chuyển sang dàn NGANG
-     logo bên trái – nav-links bên phải (justify-content: space-between) */
+  /* Â§15.2 Navbar: chuyá»ƒn sang dÃ n NGANG
+     logo bÃªn trÃ¡i â€“ nav-links bÃªn pháº£i (justify-content: space-between) */
   .navbar {
     flex-direction: row;
     align-items: center;
@@ -863,14 +902,14 @@ h1, h2, h3, h4 {
     gap: var(--sp-6);
   }
 
-  /* Nav-links: thu về ngang cạnh nhau */
+  /* Nav-links: thu vá» ngang cáº¡nh nhau */
   .nav-links {
     width: auto;
     flex-wrap: nowrap;
     gap: var(--sp-2);
   }
 
-  /* §15.3 Hero: chuyển sang dàn NGANG – ảnh trái, text phải */
+  /* Â§15.3 Hero: chuyá»ƒn sang dÃ n NGANG â€“ áº£nh trÃ¡i, text pháº£i */
   .hero-section {
     padding-block: var(--sp-16);
   }
@@ -899,7 +938,7 @@ h1, h2, h3, h4 {
     justify-content: flex-start;
   }
 
-  /* §15.4 About: tăng padding section */
+  /* Â§15.4 About: tÄƒng padding section */
   .about-layout {
     padding-block: var(--sp-10);
   }
@@ -908,7 +947,7 @@ h1, h2, h3, h4 {
     padding: var(--sp-8);
   }
 
-  /* §15.5 Skills & Projects: section padding lớn hơn */
+  /* Â§15.5 Skills & Projects: section padding lá»›n hÆ¡n */
   .skills-section,
   .projects-section {
     padding-block: var(--sp-12);
@@ -916,63 +955,63 @@ h1, h2, h3, h4 {
 
   .skills-grid { gap: var(--sp-6); }
 
-} /* /END Breakpoint ≥ 768px */
+} /* /END Breakpoint â‰¥ 768px */
 
 
-/* ══════════════════════════════════════════════════════════════
-   BREAKPOINT: ≥ 900px – Tablet Landscape / Large Tablet
-   ── About layout: Grid 2 CỘT (article 1fr + aside 260px)
-   ── Aside: bật sticky để dính khi cuộn
-   ══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BREAKPOINT: â‰¥ 900px â€“ Tablet Landscape / Large Tablet
+   â”€â”€ About layout: Grid 2 Cá»˜T (article 1fr + aside 260px)
+   â”€â”€ Aside: báº­t sticky Ä‘á»ƒ dÃ­nh khi cuá»™n
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (min-width: 900px) {
 
-  /* §15.6 About Grid: chuyển từ 1 cột → 2 cột
-     ┌───────────────────────────┬──────────────┐
-     │  <article.about-article>  │  <aside>     │
-     │  1fr – linh hoạt          │  260px cố định│
-     └───────────────────────────┴──────────────┘ */
+  /* Â§15.6 About Grid: chuyá»ƒn tá»« 1 cá»™t â†’ 2 cá»™t
+     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+     â”‚  <article.about-article>  â”‚  <aside>     â”‚
+     â”‚  1fr â€“ linh hoáº¡t          â”‚  260px cá»‘ Ä‘á»‹nhâ”‚
+     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ */
   .about-layout {
     grid-template-columns: 1fr var(--sidebar-width);
     gap: var(--sp-6);
     padding-block: var(--sp-12);
   }
 
-  /* §15.7 Aside: bật sticky – cuộn cùng trang nhưng dừng đúng vị trí */
+  /* Â§15.7 Aside: báº­t sticky â€“ cuá»™n cÃ¹ng trang nhÆ°ng dá»«ng Ä‘Ãºng vá»‹ trÃ­ */
   .aside-education {
     position: sticky;
     top: calc(var(--header-height) + var(--sp-6));
   }
 
-} /* /END Breakpoint ≥ 900px */
+} /* /END Breakpoint â‰¥ 900px */
 
 
-/* ══════════════════════════════════════════════════════════════
-   BREAKPOINT: ≥ 1024px – Desktop
-   ── Hero avatar: kích thước đầy đủ
-   ── Heading h1: cỡ chữ lớn nhất
-   ══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BREAKPOINT: â‰¥ 1024px â€“ Desktop
+   â”€â”€ Hero avatar: kÃ­ch thÆ°á»›c Ä‘áº§y Ä‘á»§
+   â”€â”€ Heading h1: cá»¡ chá»¯ lá»›n nháº¥t
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (min-width: 1024px) {
 
-  /* §15.8 Hero: nâng cỡ chữ lên lớn nhất */
+  /* Â§15.8 Hero: nÃ¢ng cá»¡ chá»¯ lÃªn lá»›n nháº¥t */
   .hero-name { font-size: var(--text-5xl); }
 
-  /* §15.9 Padding section đầy đủ */
+  /* Â§15.9 Padding section Ä‘áº§y Ä‘á»§ */
   .about-layout {
     padding-block: var(--sp-16);
   }
 
-} /* /END Breakpoint ≥ 1024px */
+} /* /END Breakpoint â‰¥ 1024px */
 
 
-/* ══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    BREAKPOINT FALLBACK: max-width: 767px
-   (Tương đương với "dưới 768px" – chỉ bổ sung override đặc biệt)
-   ── Xử lý các trường hợp cần ghi đè cụ thể trên mobile
-   ── Đảm bảo không có thanh cuộn ngang (horizontal scroll)
-   ══════════════════════════════════════════════════════════════ */
+   (TÆ°Æ¡ng Ä‘Æ°Æ¡ng vá»›i "dÆ°á»›i 768px" â€“ chá»‰ bá»• sung override Ä‘áº·c biá»‡t)
+   â”€â”€ Xá»­ lÃ½ cÃ¡c trÆ°á»ng há»£p cáº§n ghi Ä‘Ã¨ cá»¥ thá»ƒ trÃªn mobile
+   â”€â”€ Äáº£m báº£o khÃ´ng cÃ³ thanh cuá»™n ngang (horizontal scroll)
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (max-width: 767px) {
 
-  /* §15.10 Ngăn horizontal scroll */
+  /* Â§15.10 NgÄƒn horizontal scroll */
   .container,
   .navbar,
   .hero-container,
@@ -984,33 +1023,33 @@ h1, h2, h3, h4 {
     overflow-x: hidden;
   }
 
-  /* §15.11 About Grid: bắt buộc 1 cột dọc trên mobile */
+  /* Â§15.11 About Grid: báº¯t buá»™c 1 cá»™t dá»c trÃªn mobile */
   .about-layout { grid-template-columns: 1fr; }
 
-  /* §15.12 Skills & Projects Grid: 1 cột trên màn hình nhỏ */
+  /* Â§15.12 Skills & Projects Grid: 1 cá»™t trÃªn mÃ n hÃ¬nh nhá» */
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  /* §15.13 Ảnh dự án: giảm chiều cao trên mobile */
+  /* Â§15.13 áº¢nh dá»± Ã¡n: giáº£m chiá»u cao trÃªn mobile */
   .project-img { height: 180px; }
 
-  /* §15.14 About stats: căn giữa trên mobile */
+  /* Â§15.14 About stats: cÄƒn giá»¯a trÃªn mobile */
   .about-stats { justify-content: center; }
 
-  /* §15.15 Footer: giảm font tiêu đề */
+  /* Â§15.15 Footer: giáº£m font tiÃªu Ä‘á» */
   .footer-heading { font-size: var(--text-2xl); }
 
-  /* §15.16 Buttons: full-width trong hero trên màn hình rất nhỏ */
+  /* Â§15.16 Buttons: full-width trong hero trÃªn mÃ n hÃ¬nh ráº¥t nhá» */
   .hero-actions .btn { flex: 1 1 140px; }
 
 } /* /END Breakpoint max-width: 767px */
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   §16. ACCESSIBILITY & UTILITIES
-   ═══════════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Â§17. ACCESSIBILITY & UTILITIES
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Skip-to-main link */
 .skip-link {
@@ -1028,7 +1067,7 @@ h1, h2, h3, h4 {
 }
 .skip-link:focus { transform: translateY(0); }
 
-/* Focus ring – hiển thị rõ khi dùng bàn phím */
+/* Focus ring â€“ hiá»ƒn thá»‹ rÃµ khi dÃ¹ng bÃ n phÃ­m */
 :focus-visible {
   outline: 3px solid var(--primary-color);
   outline-offset: 3px;
@@ -1048,7 +1087,7 @@ h1, h2, h3, h4 {
   border: 0;
 }
 
-/* Giảm chuyển động – tôn trọng cài đặt hệ thống */
+/* Giáº£m chuyá»ƒn Ä‘á»™ng â€“ tÃ´n trá»ng cÃ i Ä‘áº·t há»‡ thá»‘ng */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1059,3 +1098,4 @@ h1, h2, h3, h4 {
     scroll-behavior: auto !important;
   }
 }
+
